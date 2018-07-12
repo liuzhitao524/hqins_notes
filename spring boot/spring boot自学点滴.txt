@@ -1,0 +1,40 @@
+Spring框架的重要两个概念：
+IoC（Inversion of Control）:对组件对象控制权的转移，从程序代码本身转移到容器；
+
+
+DI(Dependency Injection):在运行期间，外部容器动态地将依赖对象注入被依赖组件中；
+
+重要组件分类：
+web视图渲染模板引擎：Thymeleaf、Freemarker、Velocity
+重要概念：
+相似注解区别：
+@Service 用于标注业务层组件
+@Controller 用于标注控制层组件
+@Repository 用于标注数据访问组件（DAO）
+@Componet泛指组件，当组件不好归类的时候，用此注解标注；
+
+@Autowired 和@Resource的区别：（bean的名字和类型）
+@Autowired 默认按类型注入（可结合@Qualifier 按名字注入）
+@Resource 默认按名字注入；
+
+控制器：控制请求接收和负责响应到视图的角色。
+@Controller 注解标识一个类作为控制器
+@RequestMapping 注解标识请求URL信息，可以映射到整个类或者某个特定的方法。
+DispatcherServerlet 扫描所有控制器类，并检测@RequestMapping 注解配置的方法。
+@ResponseBody注解 标识该方法的返回值。这样被标注的方法返回值，会直接写入HTTP响应体（而不会被视图解析器认为是一个视图对象）
+@RestController 注解 ：整合了@Controller 和@ResponseBody 功能。
+@ModelAttrribute 注解 添加一个或者多个属性（类对象） 到model上；
+@PathVariable 注解通过变量名匹配到URI模板中相对应的变量。
+@Component （把普通pojo实例化到spring容器中，相当于配置文件中的<bean id="" class=""/>）
+2.HTTP报文：
+ 请求报文：请求行 通用信息头 请求头 实体头 （空行）报文主体
+ 响应报文：状态行 通用信息头 响应头 实体头 （空行）报文主体
+请求行-请求方法：
+GET            请求获取Request-URI所标识的资源
+POST          在Request-URI所标识的资源后附加新的数据
+HEAD         请求获取由Request-URI所标识的资源的响应消息报头
+PUT            请求服务器存储一个资源，并用Request-URI作为其标识
+DELETE       请求服务器删除Request-URI所标识的资源
+TRACE        请求服务器回送收到的请求信息，主要用于测试或诊断
+CONNECT  保留将来使用
+OPTIONS   请求查询服务器的性能，或者查询与资源相关的选项和需求

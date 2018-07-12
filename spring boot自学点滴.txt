@@ -1,0 +1,5 @@
+重要概念：
+1 控制器：控制请求接收和负责响应到视图的角色。
+@Controller 注解标识一个类作为控制器
+@RequestMapping 注解标识请求URL信息，可以映射到整个类或者某个特定的方法。
+DispatcherServerlet 扫描所有控制器类，并检测@RequestMapping 注解配置的方法。

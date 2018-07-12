@@ -1,0 +1,24 @@
+MyBaits
+1.整体介绍：mybaits 是一个可以自定义SQL、存储过程和高级映射的持久层框架
+2.主要配置文件：
+	mybatis 配置文件
+	映射配置文件
+3.使用方式：
+	xml 配置文件（优点：sql 和 业务逻辑代码隔离）
+	注解（方便）
+
+4.配置介绍：
+mybatis.config = mybatis 配置文件名称
+mybatis.mapperLocations = mapper xml 文件地址
+mybatis.typeAliasesPackage = 实体类包路径
+mybatis.typeHandlersPackage = type handlers 处理器包路径
+mybatis.check-config-location = 检查 mybatis 配置是否存在，一般命名为 mybatis-config.xml
+mybatis.executorType = 执行模式。默认是 SIMPLE
+5.映射文件的规则：
+	“namespace”：目的是区别映射文件中的方法（可自定义）
+	“resultMap”: ORM(Object Relational Mapping)精髓：
+		在结果集中，包括主键 id 和 普通属性 result；
+		在结果集中，常用的两个属性分别为：property，表示实体的属性；column，表示 SQL 查询的结果集的列。
+	  常用标签： select，insert，update，delete
+		*当参数和返回值是集合的时候，其声明式集合中的元素类型
+		 
