@@ -1,0 +1,5 @@
+1.在单实例scope的filed member scoper为prototype的问题？
+
+	依赖注入ApplicationContext，getBean 方法；
+
+2. @Scope 代理模式应用场景，以及注意事项?

@@ -1,0 +1,6 @@
+1.静态代理和动态代理
+动态代理：
+	-Dynamically create the proxy object
+	-Dynamically handle calls to the proxied method
+静态代理：
+	需要为每一个接口创建一个代理类；

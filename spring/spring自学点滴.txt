@@ -1,0 +1,9 @@
+1.@Configuration 和@Bean
+@Configuration可理解为用spring的时候xml里面的<beans>标签
+
+@Bean可理解为用spring的时候xml里面的<bean>标签，应用在方法上，并且该方法返回一个Bean；
+杂谈：一类是使用Bean，即是把已经在xml文件中配置好的Bean拿来用，完成属性、方法的组装；
+		比如@Autowired , @Resource，可以通过byTYPE（@Autowired）、byNAME（@Resource）的方式获取Bean；
+
+      一类是注册Bean,@Component , @Repository , @ Controller , @Service , @Configration这些注解都是把你要实例化的对象转化成一个Bean，放在IoC容器中，
+		等你要用的时候，它会和上面的@Autowired , @Resource配合到一起，把对象、属性、方法完美组装。

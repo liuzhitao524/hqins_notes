@@ -13,6 +13,13 @@ web视图渲染模板引擎：Thymeleaf、Freemarker、Velocity
 @Repository 用于标注数据访问组件（DAO）
 @Componet泛指组件，当组件不好归类的时候，用此注解标注；
 
+@Scope 注解：
+	1.singleton（默认模式）：单例，全局有且仅有一个实例；
+	2.prototype（原型模式）：每次获取Bean时候会有一个新的实例
+	3.request	       ： 每次Http请求都会产生一个新的Bean，同时该Bean仅在当前HTTP request 内有效。
+	4.session	       ： 每次Http请求都会产生一个新的Bean，同时该Bean 仅在当前Http session 内有效；
+
+
 @Autowired 和@Resource的区别：（bean的名字和类型）
 @Autowired 默认按类型注入（可结合@Qualifier 按名字注入）
 @Resource 默认按名字注入；
