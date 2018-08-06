@@ -1,0 +1,45 @@
+垃圾收集器语境下并发和并行的概念：
+	并行（Parallel）:指多条垃圾收集线程并行工作，但此时用户线程仍然处于等待状态；
+	并发（Concurrent）:指用户线程与垃圾收集线程同时执行，用户程序在继续执行，而垃圾收集程序运行于另一CPU上。
+垃圾收集器：
+	Young Generation:
+		Serial 收集器：
+			1.单线程
+			2.进行垃圾收集时，必须暂停其他所有的工作线程（“Stop The World”）;
+		ParNew 收集器：
+			其实是Serial收集器的多线程版本，其他基本完全一样。
+		Parallel Scavenge 收集器：
+			1.关注点不同，CMS等收集器关注缩短垃圾收集时用户线程的停顿时间，而Parallel Scavenge收集器的目标是达到一个可控制的吞吐量。
+				吞吐量 = 运行用户代码时间 /(运行用户代码时间 + 垃圾收集时间）
+			2.具有自适应调节策略。
+
+
+	Tenured Generation:
+		Serial Old收集器：
+			1.采用“标记-整理”算法。
+		Parallel Old收集器：
+			1.Parallel Scanvenge收集器的老年代版本。
+			2.采用“标记-整理算法”；
+		CMS收集器：
+			1.以获取最短回收停顿时间为目标的收集器。
+			2. 采用“标记-清除”算法。	
+			3.整个过程分为四个阶段：
+				初始标记("Stop The World”）
+				并发标记
+				重新标记 ("Stop The World")
+				并发清除
+
+	G1收集器（破坏者）：
+		1.没有新生代和老年代的限制，而是将java堆分成大小相等的独立区域（Region）；
+		2.运作流程：
+			初始标记
+			并发标记
+			最终标记
+			筛选回收
+
+内存分配和回收策略：
+	1.对象优先在Eden分配
+	2.大对象直接进入老年代；（-XX:PretenureSizeThreshold参数（只对Serial 和ParNew 有效）设置大对象的值）：目的是避免在Eden去以及两个Survivor去之间发生大量的内存复制；
+	3.长期存活的对象将进入老年代；（-XX:MaxTenuringThreshold设置）
+	4.动态对象年龄判定：如果在Survivor空间中相同年龄的所有对象大小的综合大于Survivor空间的一半，年龄大于或者等于该年龄的对象就可以直接进入老年代，无须等到MaxTenuringThreshold中的要求的年龄。
+	5.空间分配担保：设置参数：+/-HandlePromotionFailure 是否允许担保失败
