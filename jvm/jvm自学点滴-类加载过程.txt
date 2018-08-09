@@ -24,3 +24,5 @@
 	1.启动类加载器 《JAVE_HOME》\lib
 	2.扩展类加载器	<Java_home>\lib\ext
 	3.应用程序类加载器（系统类加载器）
+双亲委派模型：
+	双亲委派模型被破坏的三种情形：见254-》引出线程上下文加载器（Thread Context ClassLoader）去加载JNDI接口（jdbc,jce等）提供者的代码；

@@ -1,0 +1,30 @@
+关键词synchronized:
+	--There is a single lock that is shared by  all synchronized methods of a particular object,and
+		this lock can be used to prevent object memory from being written by more than one task
+		at a time;
+	-- One task may accquire an object's lock multiple times;
+	-- synchronized static methods can lock each other out from simultaneous acess of static data
+		on a class-wide basis;
+
+Atomicity:
+	Reading and writing primitive variables other than long and double is guaranteed to go to and from
+		memory as atomic operations;
+Volatile:
+	--Any writes that a task makes will be visible to that task,so you don't need to make a filed
+		volatile if is only seen within a task;
+
+
+Cooperation between tasks:
+	sleep and yield:dose not release the object lock when it is called; 
+	wait/notify:
+		wait：--*not busy waiting,so Wait() suspends the task while waiting for the world to change;
+		      --*wait release the lock,means that the lock can be acquired by another task;
+		      --*The only place you can call wait(),notify,or notifyAll(） is within a synchronized method;(因为条件量的判断需要互斥）
+
+
+New libray components:
+	--CountDownLatch:
+		This is used to synchronize one or more tasks by forcing them to wait for completion
+			of a set operations being performed by other tasks;	
+		Any task that calls await() on that object will block unitl the count reaches zero and
+			CountDownLatch is designed to be used in a one-shot fashion(the count cannot be reset);	
