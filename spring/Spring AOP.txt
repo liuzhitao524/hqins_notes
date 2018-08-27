@@ -28,7 +28,32 @@ AOP concepts£º
 
 Types of advice:
 	-Before advice:
-	-After returning advice£º
-	-After throwing advice:
+	-After returning advice£ºAfter returning advice runs when a matched method execution returns normally
+	-After throwing advice:After throwing advice runs when a matched method execution exits by throwing an exception.
 	-After(finally advice:
 	-Around advice:
+A Pointcut:
+	two parts:
+		-a signature comprising a name and any parameters.(the method serving as the pointcut signature must have a void return type)
+		-a pointcut expression that determines exactly which methods executions we are interested in.
+	Supported Poincut Designators:
+		-execution: for matching method execution join points.
+		-within : limits matching to join points within certain types;
+		-this : limits matcing to join points where bean  reference(Spring AOP proxy)is an instance of the given type;
+		-target: limits matching to join points where the target object(applicatioin object being proxied) is an instance of the given type;
+		-args£º limits matching to join points where the arguments are instances of the given types;
+		-@target£º limits matching to join points where the class of the executing object has an annotation of the given type;
+		-@args: limits matching to join points where the runtime type of the actual arguments passed have annotations of the given types;
+		-@within: limits matching to join points within types that  have the given annotation;
+		-@annotation : limits matching to join points where the subject of the jion point has the given annotation;
+	For JDK proxies, only public interface method calls on the proxy can be intercepted. 
+		With CGLIB, public and protected method calls on the proxy will be intercepted, and even package-visible methods if necessary.
+Combining poincut expressions:
+	Pointcut expressions can be combined using '&&','||',and '!'.
+	When referring to pointcuts by name,normal  Java visibility rules apply(you can see private pointcuts in the same type,protected pointcuts in
+		the hierarchy,public pointcuts anywhere and so on). Visibility does not affect pointcut matching.
+Format of an execution expression:
+	execution(modifiers-pattern? ret-type-pattern declaring-type-pattern?name-pattern(param-pattern)
+            throws-pattern?)
+	(×¢½â£º The parameters pattern is slightly more complex: () matches a method that takes no parameters, whereas (..) matches any number of parameters (zero or more). The pattern (*) matches a method taking one parameter of any type, (*,String) matches a method taking two parameters, the first can be of any type, the second must be a String. £©
+	
