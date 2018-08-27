@@ -1,0 +1,34 @@
+DispatcherServerlet:
+	
+Spring AOP使用的动态代理（相比静态代理（AspectJ）不会修改字节码），而是在内存中临时为方法生成一个AOP对象。
+
+两种动态代理的方式：
+	-JDK动态代理：InvocationHandler接口和Proxy类
+
+	-CGLIB（Code Generation Library）动态代理：如果目标类没有实现接口，Spring Aop会选择使用CGLIB来
+		动态代理目标类。
+		CGLIB: 代码生成类库，可以在运行时动态生成某个类的子类（CGLIB是通过继承的方式做动态代理），如果
+			某个类被标记为final，就无法使用CGLIB。	
+
+AOP concepts：
+	-Aspect： a modularization of  a concern that cuts across multiple classes.
+		In Spring AOP,aspects are implemented using regular classes or regular classes annotated
+	with the @Aspect annotation .
+	-Joint point: In Spring AOP,a join point always represents a method execution;
+	-Advice: action taken by an aspect at a particular join point.
+	-Pointcut: a predicate that matches join points;
+	-Introduction: declaring additonal methods or fields on behalf of a type;
+	-Target object: object being advised by one or more aspects.Since Spring AOP is implemented using
+		runtime proxies,this object will always be a proxied object;
+	-AOP proxy: an object created by the AOP framework in order to implement the aspect contracts.In the
+		Spring Framework,an AOP proxy will be a JDK dynamic proxy or CGLIB proxy;
+	-Weaving: linking aspects with other application types or objects to create advised object;
+		***This is can be done at compile time (using  the AspectJ compiler for example),
+		*** Spring Aop ,like other pure Java AOP frameworks,performs weaving at runtime;
+
+Types of advice:
+	-Before advice:
+	-After returning advice：
+	-After throwing advice:
+	-After(finally advice:
+	-Around advice:

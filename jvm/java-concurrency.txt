@@ -28,3 +28,5 @@ New libray components:
 			of a set operations being performed by other tasks;	
 		Any task that calls await() on that object will block unitl the count reaches zero and
 			CountDownLatch is designed to be used in a one-shot fashion(the count cannot be reset);	
+	--CyclicBarrier:
+		-CountDownLatch is one-shot event,whereas a CyclicBarrier can be resued over and over;

@@ -1,7 +1,7 @@
 Spring框架的重要两个概念：
+软件设计的一个重要思想：依赖倒置原则（Dependency Inversion Principle ）。
 IoC（Inversion of Control）:对组件对象控制权的转移，从程序代码本身转移到容器；
-
-
+AOP（Aspect Oriented Program）:动态地将代码切入到类的指定方法、指定位置上的思想就是面向切面的编程。
 DI(Dependency Injection):在运行期间，外部容器动态地将依赖对象注入被依赖组件中；
 
 重要组件分类：

@@ -1,0 +1,17 @@
+Q1：Lambda 和并行化的关系，即如何提高效率的；
+Q2：目前的集合数据操作，即数据并行化
+0.1.8java 最大的更新：
+	--Lambda和默认的方法和接口的静态方法。
+	--Collection接口的stream 方法
+1.函数接口和@FunctionInterface
+	注解会检查是否符合函数接口。
+2.兼容性考虑（Collection接口的stream方法）-针对第三方类库
+	解决方案： 默认方法
+   静态方法：
+	避免工具类，工具方法。
+3. Optional 对象VS null
+	
+4. 方法引用：重用已有方法(与Lambda表达式等价，只是语法简洁)
+	标准语法： Classname:methodname
+5. 元素顺序：
+	流： 出现顺序，出现顺序依赖于数据源和对流的操作。

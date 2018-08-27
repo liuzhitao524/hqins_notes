@@ -1,0 +1,18 @@
+mybatis：
+	1.statementType: Statement,PreparedStatement,CallableStatement
+		Statement:
+		PreparedStatement（默认值）:预处理：支持参数化操作
+		CallableStatement:存储过程，带有逻辑的sql的语句
+	2.resultSetType: FORWARD_ONLY、SCROLL_SENSITIVE、SCROLL_INSENSTIVE
+		FORWARD_ONLY:		结果集的游标只能向下滚动。
+		SCROLL_SENSITIVE:	结果集的游标可以上下移动，当数据库变化时，当前结果集不变；
+		SCROLL_INSENSITIVE:	结果集的游标可以上下移动，当数据库变化时，当前结果集同步改变。
+	3.flushCache: true,then任何时候只要语句被调用，都会导致本地缓存和二级缓存都会被清空。默认为：true
+	4.timeout: 这个设置在抛出异常之前，驱动程序等待数据库返回请求结果的秒数。默认为unset（依赖驱动）
+	5.useGeneratedKeys:（仅对insert和update有用）这会令Mybatis使用JDBC的getGeneratedKeys()方法取出
+		由数据库内部生成的主键（比如：MySql中的自动递增字段），默认为：false
+	6.keyProperty: (仅对insert 和update有用）唯一标记一个属性，Mybatis会通过getGeneratedKeys的返回值
+		或通过insert语句的selectKey子元素设置它的键值，默认：unset。如果希望得到多个生成的列，也可以
+		是逗号分隔的属性名称列表。
+	7.keyColumn:仅对 insert 和 update 有用）通过生成的键值设置表中的列名，这个设置仅在某些数据库（像 PostgreSQL）是必须的，
+		当主键列不是表中的第一列的时候需要设置。如果希望得到多个生成的列，也可以是逗号分隔的属性名称列表。
